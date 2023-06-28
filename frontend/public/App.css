@@ -1,0 +1,230 @@
+
+.trash {
+    width: 23px;
+    height: 23px;
+    margin-left: 90px;
+  }
+  .trash:hover{
+   background-color: rgb(236, 158, 132);
+   border-radius: 10px;
+  }
+  .box {
+    border: 1px solid rgb(247, 201, 201);
+    border-style: calc();
+    border-radius: 12px;
+    padding-left: 10px;
+    margin-top: 20px;
+    display:block;
+    width: 490px;
+    margin-left: 10px;
+    display: inline-block;
+    text-align: center;
+  }
+  .row{
+
+padding-left: 30px;
+text-align: center;
+
+   
+  }
+
+  .shopping{
+    margin-left: 50px;
+  }
+  .boxContents {
+
+  margin-left: 10px;
+   margin-right: 10px;
+  }
+  .price{
+    float: right;
+  }
+
+ 
+    .total {
+      border: 0px solid rgb(184, 177, 237);
+
+      width: 200px;
+      position: fixed;
+  
+      top: 200px;
+      right: 10px;
+      background: #eee;
+     border-radius: 20px;
+      height: 270px;
+      text-align: center;
+    
+      }
+   
+      .head{
+      padding-left: 15px;
+      margin-top: 20px;
+   
+    }
+  
+    .num {
+      background-color: rgb(53, 80, 188);
+      color: #f2e9e9;
+      font-weight: bold;
+      border: none;
+      width: 23px;
+      height: 22px;
+      border-radius: 8px;
+    }
+
+  
+  .quantity1{
+    margin-left: 60px;
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: rgb(247, 177, 120);
+    border-radius: 6px;
+    font-weight: bold;
+
+  }
+  .quantity1:hover{
+    color: rgb(236, 235, 242);
+  }
+  .quantity2:hover{
+    color: rgb(244, 187, 2);
+  }
+  
+  .quantity2{
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 6px;
+   background-color:   rgb(38, 125, 237);
+    color: #eee;
+    font-weight: bold;
+  }
+  .buy{
+    border: none;
+    background-color: rgb(68, 68, 241);
+    border-radius: 20px;
+    color: #eee;
+    width: 170px;
+    height:40px;
+    font-size: large;
+    margin-top: 20px;
+
+  }
+
+  .buy:hover{
+    cursor:pointer;
+    font-size: 115%;
+    color: yellow;
+  }
+
+  .text{
+    color: rgb(101, 99, 99);
+    font-weight: normal;
+    list-style-type: none;
+  }
+
+.sep:hover .scroll{
+  display:block
+}
+
+
+.scroll{
+
+position: absolute;
+  background-color: rgba(223, 215, 215, 0.99);
+  border-radius: 2%;
+  z-index: 3;
+  color: black;
+ top: 30px;
+}
+
+.about {
+  float: right;
+}
+
+.addBasket {
+ 
+  background:  rgb(175, 115, 244);
+  border-radius: 5px;
+  color: #eee;
+  font-weight: bold;
+  width: 130px;
+  height: 30px;
+}
+
+.dropdown-basic{
+  color: rgb(111, 78, 114) !important;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 350px;
+  margin: auto 1rem;
+  text-align: center;
+  position: relative;
+}
+
+
+.product-link {
+  position: relative;
+}
+
+.product-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 93.4%;
+  background-color: rgba(0, 0, 0, 1);
+  color: rgb(255, 255, 255);
+  font-weight: 400;
+  font-size: 30px;
+  text-align: center;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.product--image {
+  width: 98%;
+  height: 12em;
+  object-fit: cover;
+}
+
+.special:hover .product-overlay {
+  transition: opacity 0.3s ease;
+  opacity: 0.5;
+}
+
+.product--image:hover {
+  transform: scale(1.01);  
+  transition-duration: 0.8s;
+}
+
+  .feautured {
+  width: 1200px;
+  height: 30px;
+  background-color: aquamarine;
+}
+.class:hover{
+  transform: scale(1.1);  
+  transition-duration: 0.2s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
