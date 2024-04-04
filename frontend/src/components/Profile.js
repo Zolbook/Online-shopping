@@ -1,18 +1,18 @@
 import React from "react";
-import { useAuth0 } from "@auth0/auth0-react";
 
-export const Profile =() => {
+export const Profile = ({ userInfo }) => {
 
-    const {user } = useAuth0();
+    if (!userInfo || !Object.keys(userInfo).length) {
+        return <div>Loading or not authenticated...</div>;
+    }
 
-return (
-    <>
-    <h4>Хэрэглэгчийн мэдээлэл</h4>
-    <img src={user.picture}/>
-    <h2>Нэр {user.name}</h2>
-    <h2>Email хаяг {user.email}</h2>
-    <h2>Хүргэлтийн хаяг</h2>
-    </>
-
-);
+    return (
+        <>
+            <h4>Хэрэглэгчийн мэдээлэл</h4>
+            <img src={userInfo.imageUrl} alt="Profile" />
+            <h2>Нэр: {userInfo.name}</h2>
+            <h2>Email хаяг: {userInfo.email}</h2>
+            <h2>Хүргэлтийн хаяг</h2>
+        </>
+    );
 }

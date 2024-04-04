@@ -1,38 +1,65 @@
-import React from "react";
-import { useAuth0 } from "@auth0/auth0-react";
-import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBBtn} from 'mdb-react-ui-kit';
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from 'mdb-react-ui-kit';
 
+function UserProfile() {
+    const [isLogged, setIslogged] = useState(false);
+    const [userInfo, setUserInfo] = useState({});
 
-export default function UserProfile() {
-    const { loginWithRedirect, isAuthenticated, logout, user } = useAuth0();
+    useEffect(() => {
+        fetch("/api/current_user", { credentials: 'include' })
+            .then(res => {
+                if (!res.ok) throw new Error(res.statusText);
+                return res.json();
+            })
+            .then(data => {
+                if (data && data.googleId) {
+                    setIslogged(true);
+                    setUserInfo(data);
+                } else {
+                    setIslogged(false);
+                    setUserInfo({});
+                }
+            })
+            .catch(error => {
+                console.error("Error checking user session:", error);
+            });
+    }, []);
+
+    const handleLogout = () => {
+        fetch("http://localhost:5001/auth/logout", { 
+            credentials: 'include', 
+            method: "POST" 
+        })
+            .then(response => {
+                if (!response.ok) throw new Error(response.statusText);
+                return response.json();
+            })
+            .then(() => {
+                setIslogged(false);
+                setUserInfo({});
+            })
+            .catch(err => {
+                console.error("Logout failed:", err);
+            });
+    };
 
     return (
-        <>
-            {isAuthenticated ? (
-
-                <MDBDropdown>
-
-                    <MDBDropdownToggle tag="a" href="#!" className="hidden-arrow nav-link">
-                        <img src={user.picture} className="rounded-circle" height="22" alt="pic" />
-                    </MDBDropdownToggle >
-                    <MDBDropdownMenu >
-                        <MDBDropdownItem style={{textAlign:'center'}}>
-                          <Link to='/Profile' style={{textDecoration:'none'}}>Хэрэглэгчийн <br/> хэсэг</Link>
-                        </MDBDropdownItem>
-                        <MDBDropdownItem style={{textAlign:'center'}}>
-                            <MDBBtn onClick={() => logout({ returnTo: window.location.origin })}>
-                                Гарах </MDBBtn>
-                        </MDBDropdownItem>
-                    </MDBDropdownMenu>
-
-                </MDBDropdown>
+        <div>
+            {isLogged ? (
+                <div>
+                    <button onClick={handleLogout}>Logout</button>
+                </div>
             ) : (
-
-                <MDBBtn onClick={() => loginWithRedirect()}>Нэвтрэх</MDBBtn>
-
+                <button onClick={() => window.location.href = "http://localhost:5001/auth/google"}>
+                    Login with Google
+                </button>
             )}
-
-        </>
-    )
+        </div>
+    );
 }
+
+export default UserProfile;
+
+
+

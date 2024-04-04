@@ -193,7 +193,7 @@ const DataProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
-    const saved = localStorage.getItem('datakey');
+    const saved = localStorage.getItem('datakey');1
   
     if (saved) {
       try {
@@ -262,11 +262,11 @@ const DataProvider = ({ children }) => {
       const updatedQuantity = existingProduct.quantity - 1;
   
       if (updatedQuantity === 0) {
-        // remove item from cart
+    
         const updatedItems = cartItems.filter((item) => item.product._id !== product._id);
         setCartItems(updatedItems);
       } else {
-        // update item quantity
+     
         const updatedItems = cartItems.map((item) => {
           if (item.product._id === product._id) {
             return { product: item.product, quantity: updatedQuantity };
@@ -277,7 +277,7 @@ const DataProvider = ({ children }) => {
         setCartItems(updatedItems);
       }
   
-      // send API request to update cart item
+ 
       const response = await fetch(`${process.env.REACT_APP_API_URI}/api/cart/${product._id}`, {
         method: 'PUT',
         headers: {
@@ -292,7 +292,7 @@ const DataProvider = ({ children }) => {
       }
     } catch (error) {
       console.error(error);
-      // show error message and revert UI to previous state if server-side update fails
+     
       alert('Failed to update cart. Please try again.');
       setCartItems(prevItems => {
         return prevItems.map(item => {

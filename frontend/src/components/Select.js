@@ -1,6 +1,6 @@
 import { MDBBtn, MDBInput } from 'mdb-react-ui-kit';
 import React, { useEffect, useState } from 'react';
-
+import MapPicker from './MapPicker';
 
 export const elements = [
 
@@ -8,7 +8,9 @@ export const elements = [
       <Provinces />,   
       <p>dededwswweedede</p>,
 ]
-
+const handleLocationChange = (location) => {
+  console.log("New Location:", location);
+};
 function Provinces() {
     const [selectedCity, setSelectedCity] = useState(()=>{
         const saved= localStorage.getItem('city');
@@ -228,6 +230,7 @@ setSubmittedAddress(addresses);
     <div className='card' style={{marginTop:'60px'}}>
     <p>Дэлгэрэнгүй хаяг</p>
     <form onSubmit={handleSubmit}>
+    <MapPicker onLocationChange={handleLocationChange} />
     <MDBInput type='text' value={addresses} onChange={address}/>
     <MDBBtn type='submit' >Хадгалах</MDBBtn>
     </form>
